@@ -1,0 +1,16 @@
+# Instructions
+
+<!-- System-level instructions that apply to all Claude sessions. -->
+<!-- These are concatenated into ~/.claude/CLAUDE.md alongside your identity and style config. -->
+
+## General rules
+<!-- Example: -->
+<!-- - Always show your plan before executing -->
+<!-- - Never delete files unless I explicitly say so -->
+<!-- - Generate output files, don't just show text in chat -->
+
+## Security rules
+<!-- Example: -->
+<!-- - Never hardcode API keys or secrets -->
+<!-- - Use parameterized queries for database operations -->
+<!-- - Always validate user inputs -->

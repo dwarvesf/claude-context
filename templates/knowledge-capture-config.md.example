@@ -1,0 +1,33 @@
+# Knowledge capture config (personal)
+
+## Push destination
+<!-- Where to send captured learning notes. Options: -->
+<!-- - Capacities (macOS, requires desktop app running) -->
+<!-- - Obsidian (via file write) -->
+<!-- - Local file only (default fallback) -->
+
+## Push method
+<!-- For Capacities, use X-Callback URL: -->
+<!--
+python3 -c "
+import urllib.parse
+title = '''[TITLE]'''
+body = '''[MARKDOWN BODY]'''
+capacities_type = '[note|definition|page]'
+url = f'capacities://x-callback-url/createNewObject?spaceId=YOUR_SPACE_ID&typeKeyword={capacities_type}&title={urllib.parse.quote(title)}&mdContent={urllib.parse.quote(body)}'
+print(url)
+" | xargs open
+-->
+<!-- Replace YOUR_SPACE_ID with your Capacities space ID. -->
+
+## Capacities type mapping
+
+| Note type | typeKeyword |
+|-----------|-------------|
+| Atomic note | note |
+| Definition | definition |
+| Page | page |
+
+## Fallback
+
+If push destination is not available, save to `~/knowledge/learned-today.md` with YAML frontmatter.
