@@ -1,0 +1,21 @@
+# Notion database reference
+
+## People databases
+- Staff: 00000000-0000-0000-0000-000000000000
+- Candidates: 00000000-0000-0000-0000-000000000000
+
+## Finance databases
+- Payables: 00000000-0000-0000-0000-000000000000
+- Invoices: 00000000-0000-0000-0000-000000000000
+
+## Projects databases
+- Projects: 00000000-0000-0000-0000-000000000000 (Data Source: collection://00000000-0000-0000-0000-000000000000)
+- Clients: 00000000-0000-0000-0000-000000000000
+
+## Key pages
+- Dashboard: 00000000-0000-0000-0000-000000000000
+
+## Query patterns
+- Use Page ID for notion-fetch (reading a specific page)
+- Use Data Source (collection://) URL for notion-search and notion-create-pages
+- Filter by Status = Active for current items

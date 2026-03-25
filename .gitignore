@@ -1,0 +1,10 @@
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.bak
+*.backup.*
+private/
+.claude/
