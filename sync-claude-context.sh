@@ -82,7 +82,28 @@ if [ -n "$SKILLS_DIR" ] && [ -d "$SKILLS_DIR" ]; then
         [ -f "$skill_dir/SKILL.md" ] || continue
         skill_name="$(basename "$skill_dir")"
         target="$HOME/.claude/skills/$skill_name"
-        rm -f "$target"
+
+        # Skip if target exists and isn't one of our symlinks
+        if [ -e "$target" ] || [ -L "$target" ]; then
+            existing_link=$(readlink "$target" 2>/dev/null || echo "")
+            case "$existing_link" in
+                "$SKILLS_DIR"/*)
+                    # Our symlink from a previous sync, safe to replace
+                    rm -f "$target"
+                    ;;
+                "")
+                    # Real directory, not a symlink
+                    echo -e "  ${YELLOW}Skipped: $skill_name (real directory exists, not overwriting)${NC}"
+                    continue
+                    ;;
+                *)
+                    # Symlink to somewhere else (plugin marketplace, manual install)
+                    echo -e "  ${YELLOW}Skipped: $skill_name (symlink to $existing_link, not overwriting)${NC}"
+                    continue
+                    ;;
+            esac
+        fi
+
         ln -s "$skill_dir" "$target"
         echo "  Linked: $skill_name -> ~/.claude/skills/"
     done
