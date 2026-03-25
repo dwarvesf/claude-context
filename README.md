@@ -93,13 +93,20 @@ git add -A && git commit -m "update shared config" && git push
 
 ## Skills
 
-Skills live in a separate repo (e.g., `dwarvesf/claude-skills`). To sync them:
+Skills live in a separate repo: [dwarvesf/claude-skills](https://github.com/dwarvesf/claude-skills).
 
-1. Clone your skills repo
-2. Set `SKILLS_DIR=~/claude-skills` in `.env`
-3. Run `./sync-claude-context.sh` -- skills are symlinked to `~/.claude/skills/`
+### Option 1: Plugin marketplace (recommended)
+```bash
+/plugin marketplace add dwarvesf/claude-skills
+/plugin install claude-skills@dwarvesf-claude-skills
+```
 
-Each skill is a folder with a `SKILL.md` file. Claude Code picks them up automatically.
+### Option 2: Local clone with sync
+```bash
+git clone git@github.com:dwarvesf/claude-skills.git ~/claude-skills
+# In .env: SKILLS_DIR=~/claude-skills/skills
+./sync-claude-context.sh
+```
 
 For Claude.ai Chat/Web, upload skills via Claude Desktop Settings or paste SKILL.md content as project instructions.
 
