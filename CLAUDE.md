@@ -10,21 +10,22 @@
 |------|---------|
 | `shared/` | Team-shared config (voice, coding prefs) -- committed |
 | `private/` | Personal config (identity, secrets) -- gitignored |
-| `templates/` | Example files copied to `private/` on setup |
-| `setup.sh` | One-time setup: creates `private/` from templates |
-| `sync-claude-context.sh` | Syncs shared + private files to Cowork and Code |
+| `templates/` | Example files copied to `private/` and `.env` on setup |
+| `.env` | Local path config (COWORK_DIR, SKILLS_DIR) -- gitignored |
+| `setup.sh` | One-time setup: creates `private/` and `.env` from templates |
+| `sync-claude-context.sh` | Syncs shared + private files to Cowork, Code, and skills |
 
 ## Commands
 
 ```bash
 ./setup.sh                                        # First-time setup
-./sync-claude-context.sh                          # Sync to Cowork + Code
+./sync-claude-context.sh                          # Sync to Cowork + Code + skills
 COWORK_DIR=~/other ./sync-claude-context.sh       # Sync with custom Cowork folder
 ```
 
 ## Rules
 
-- NEVER commit files inside `private/` -- the directory is gitignored for a reason
+- NEVER commit files inside `private/` or `.env` -- they are gitignored for a reason
 - No em dashes in any file
 - Keep files concise. Claude Code's CLAUDE.md effectiveness drops past ~400 lines total.
 - After editing any context file, run the sync script
