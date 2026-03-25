@@ -55,12 +55,13 @@ What `sync-claude-context.sh` does, step by step:
        |
   [2] Skills: symlink SKILLS_DIR/*/SKILL.md --> ~/.claude/skills/
        |
-  [3] Code:   cat shared/*.md + private/*.md --> ~/.claude/CLAUDE.md
+  [3] Code:   merge shared/*.md + private/*.md --> ~/.claude/CLAUDE.md
+       |       (marker-based: preserves user's own content, dedup by H2)
        |
   [4] Chat:   print reminder (manual step, no API)
 ```
 
-Each target gets the same content through different mechanisms: Cowork uses live symlinks (edits propagate instantly), Code gets a concatenated snapshot (re-run sync to update), and Chat requires manual copy.
+Each target gets the same content through different mechanisms: Cowork uses live symlinks (edits propagate instantly), Code merges into `~/.claude/CLAUDE.md` between `BEGIN/END` markers (preserving any existing user config and skipping duplicate sections), and Chat requires manual copy.
 
 ## Setup
 

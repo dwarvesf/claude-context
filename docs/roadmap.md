@@ -23,6 +23,14 @@
 - Scaffolded dwarvesf/claude-skills as plugin repo with prompt-improver skill
 - Extracted prompt improvement from claude-code-extras.md into SKILL.md
 
+### Phase 4: Content rules and sync improvements (2026-03-25, Claude Code session)
+- Added shared/knowledge-capture.md and shared/content-spec-rule.md
+- Added templates for instructions.md and knowledge-capture-config.md
+- Updated README with complete file table and sync flow diagram
+- Rewrote sync script step 3: marker-based CLAUDE.md merge instead of full overwrite
+- Added H2 dedup: skips sections the user already has in their own CLAUDE.md
+- Added migration path from old full-overwrite format
+
 ## Done
 
 - [x] Restructure claude-context for public sharing
@@ -33,6 +41,9 @@
 - [x] Scaffold dwarvesf/claude-skills with plugin manifest
 - [x] prompt-improver skill
 - [x] Architecture docs
+- [x] Knowledge capture and content spec rules (shared)
+- [x] Marker-based CLAUDE.md merge (preserves user config)
+- [x] H2 dedup (skip sections user already has)
 
 ## Next
 

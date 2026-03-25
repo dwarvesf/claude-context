@@ -85,9 +85,9 @@ claude-context/
 
 One clone, one sync, one mental model. Gitignored `private/` is simpler than cross-repo references. Same pattern as `.env.example`.
 
-### 2. Symlinks for Cowork, concatenation for Code
+### 2. Symlinks for Cowork, marker-based merge for Code
 
-Cowork reads `.md` files from working directory, so symlinks give live updates. Code reads a single `~/.claude/CLAUDE.md`, so concatenation is required.
+Cowork reads `.md` files from working directory, so symlinks give live updates. Code reads a single `~/.claude/CLAUDE.md`, so content is merged between `BEGIN/END` markers. This preserves any existing user config outside the markers. Duplicate H2 sections (user already has the same heading) are skipped automatically.
 
 ### 3. Skills via external SKILLS_DIR (not embedded in this repo)
 
