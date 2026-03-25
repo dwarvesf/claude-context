@@ -23,12 +23,18 @@ claude-context/
   shared/              # Committed. Team-shared config.
     voice-and-style.md
     claude-code-extras.md
+    knowledge-capture.md
+    content-spec-rule.md
   private/             # Gitignored. Per-user personal config.
     about-me.md
+    instructions.md
     notion-reference.md
+    knowledge-capture-config.md
   templates/           # Committed. Copied to private/ on setup.
     about-me.md.example
+    instructions.md.example
     notion-reference.md.example
+    knowledge-capture-config.md.example
     env.example
   docs/                # Committed. Architecture and roadmap.
   .env                 # Gitignored. Local path config.

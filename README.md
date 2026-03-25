@@ -43,6 +43,25 @@ This repo is the single source of truth. Clone it, add your personal details, ru
                            (symlinked on sync)
 ```
 
+## Sync flow
+
+What `sync-claude-context.sh` does, step by step:
+
+```
+  .env (COWORK_DIR, SKILLS_DIR)
+       |
+       v
+  [1] Cowork: symlink shared/*.md + private/*.md --> ~/CoworkSpace/
+       |
+  [2] Skills: symlink SKILLS_DIR/*/SKILL.md --> ~/.claude/skills/
+       |
+  [3] Code:   cat shared/*.md + private/*.md --> ~/.claude/CLAUDE.md
+       |
+  [4] Chat:   print reminder (manual step, no API)
+```
+
+Each target gets the same content through different mechanisms: Cowork uses live symlinks (edits propagate instantly), Code gets a concatenated snapshot (re-run sync to update), and Chat requires manual copy.
+
 ## Setup
 
 ```bash
@@ -86,8 +105,12 @@ git add -A && git commit -m "update shared config" && git push
 |-----------|------|---------|------------|
 | `shared/` | `voice-and-style.md` | Writing tone, formatting rules | Yes |
 | `shared/` | `claude-code-extras.md` | Coding prefs, CLIMB framework | Yes |
+| `shared/` | `knowledge-capture.md` | Auto-detect learning moments, classify and clean | Yes |
+| `shared/` | `content-spec-rule.md` | Require spec approval before long content | Yes |
 | `private/` | `about-me.md` | Your role, tools, priorities | No |
+| `private/` | `instructions.md` | Personal behavioral rules, prompt improvement | No |
 | `private/` | `notion-reference.md` | Your Notion DB IDs | No |
+| `private/` | `knowledge-capture-config.md` | Push destination (Capacities, Obsidian, etc.) | No |
 | `templates/` | `*.example` | Starter templates for private files | Yes |
 | root | `.env` | Local path config (COWORK_DIR, SKILLS_DIR) | No |
 
